@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unduh Video atau Musik TikTok</title>
+    <style>
+        @keyframes changeBg {
+            0% { background: #f6d365; }
+            50% { background: #fda085; }
+            100% { background: #f6d365; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            animation: changeBg 10s infinite alternate ease-in-out;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .container {
+            max-width: 80%;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select, button {
+            width: 90%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .usage-list {
+            padding-left: 15px;
+        }
+
+        #about a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        #about a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>▶ UNDUH AUDIO ATAU VIDIO TIKTOK</h1>
+    <div class="container">
+        <form id="downloadForm">
+            <label for="tiktok-url">Masukkan URL TikTok:</label>
+            <input type="text" id="tiktok-url" placeholder="Contoh: https://vm.tiktok.com/xxxxx" required>
+
+            <label for="format">Pilih Format:</label>
+            <select id="format" required>
+                <option value="" disabled selected>Pilih Format</option>
+                <option value="mp4">Video (MP4)</option>
+                <option value="mp3">Audio (MP3)</option>
+            </select>
+
+            <button type="submit">Unduh</button>
+            <p class="error" id="errorMessage" style="display:none;"></p>
+        </form>
+    </div>
+
+    <footer>
+        <h2>Cara Penggunaan</h2>
+        <ul class="usage-list">
+            <li>Masukkan URL video TikTok.</li>
+            <li>Pilih format output (MP4 atau MP3).</li>
+            <li>Klik tombol "Unduh" untuk memulai proses.</li>
+            <li>Tunggu beberapa saat hingga file siap diunduh.</li>
+        </ul>
+    </footer>
+
+    <section id="about">
+        <h2>Tentang Saya</h2>
+        <p>Selamat datang di situs saya! Aku adalah seorang NPC yang sedang belajar teknologi.</p>
+        <a href="mailto:banjiraki@gmail.com"> Email: danz124e@gmail.com</a>
+        <a href="tel:+62895323195263"> Telepon: +62 8953 2319 5263</a>
+    </section>
+
+    <script>
+        document.getElementById('downloadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const tiktokUrl = document.getElementById('tiktok-url').value.trim();
+            const format = document.getElementById('format').value;
+
+            if (!tiktokUrl || !format) {
+                document.getElementById('errorMessage').textContent = 'Mohon isi URL TikTok dan pilih format!';
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            }
+
+            const endpoint = `https://tools.opslinuxsec.com/ttdl/download.php?url=${encodeURIComponent(tiktokUrl)}&format=${format}`;
+            window.location.href = endpoint;
+            document.getElementById('errorMessage').style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
